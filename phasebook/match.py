@@ -16,12 +16,12 @@ def match(match_id):
     msg = "Match found" if (is_match(*MATCHES[match_id])) else "No match"
     end = time.time()
 
-    return {"message": msg, "elapsedTime": end - start}, 200
+    return {"message": msg, "elapsedTime": end - start}, 200    
 
 
 def is_match(fave_numbers_1, fave_numbers_2):
-    for number in fave_numbers_2:
-        if number not in fave_numbers_1:
-            return False
 
-    return True
+    for number in fave_numbers_2:
+        if number in fave_numbers_1:
+            return True
+    return False

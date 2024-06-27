@@ -26,5 +26,26 @@ def search_users(args):
     """
 
     # Implement search here!
+    users = []
+    if args:
+        for user in USERS:
+            
+            if args.get('age'):
+                for key, value in user.items():
+                    if value in range(int(args.get('age')) - 1, int(args.get('age')) + 2):
+                        users.append(user)
+
+            if args.get('id'):
+                if args.get('id') in user.get('id') and user.get("id") not in [user.get('id') for user in users]:
+                    users.append(user)
+
+            if args.get('name'):
+                if args.get('name') in user.get('name') and user.get("id") not in [user.get('id') for user in users]:
+                    users.append(user)
+            
+            if args.get('occupation') and user.get("id") not in [user.get('id') for user in users]:
+                if args.get('occupation') in user.get('occupation'):
+                    users.append(user)
+        return users
 
     return USERS
